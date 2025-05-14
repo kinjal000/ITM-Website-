@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact EduVerse for course inquiries and support." />
+  <title>ITM | Contact</title>
+  <link rel="stylesheet" href="itm.css" />
+</head>
+<body>
+
+<nav>
+  <a href="itm.html">Home</a>
+  <a href="itmcourses.html">Courses</a>
+  <a href="itmabout.html">About Us</a>
+  <a href="itmcontact.html">Contact</a>
+</nav>
+
+<div class="container">
+  <h1>Contact Us</h1>
+  <p>We'd love to hear from you! Fill out the form below and we'll get back to you soon.</p>
+
+  <form id="contactForm" action="#" method="POST">
+    <fieldset>
+      <legend>Personal Information</legend>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required minlength="3" />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required minlength="6" />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number" />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required min="10" max="100" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Course Details</legend>
+
+      <label for="course">Select a Course:</label>
+      <select id="course" name="course" required>
+        <option value="">--Choose a course--</option>
+        <option value="web">Web Development</option>
+        <option value="data">Data Science</option>
+        <option value="uiux">UI/UX Design</option>
+        <option value="ai">Artificial Intelligence</option>
+        <option value="cloud">Cloud Computing</option>
+        <option value="cybersecurity">Cybersecurity</option>
+        <option value="blockchain">Blockchain Technology</option>
+        <option value="devops">DevOps Engineering</option>
+        <option value="digitalmarketing">Digital Marketing</option>
+        <option value="game">Game Development</option>
+      </select>
+
+      <label>Preferred Contact Method:</label>
+      <input type="radio" name="contact" value="email" checked> Email
+      <input type="radio" name="contact" value="phone"> Phone
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <label><input type="checkbox" name="newsletter" /> Subscribe to our newsletter</label>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<footer>
+  <p>&copy; 2025 ITM School of Future Tech. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(event) {
+    const message = document.getElementById("message").value;
+    if (message.length < 10) {
+      alert("Message must be at least 10 characters long.");
+      event.preventDefault();
+    }
+
+    const email = document.getElementById("email").value;
+    if (!email.includes("@")) {
+      alert("Please enter a valid email with '@'.");
+      event.preventDefault();
+    }
+
+    const phone = document.getElementById("phone").value;
+    if (!/^\d{10}$/.test(phone)) {
+      alert("Phone number must be a 10-digit number.");
+      event.preventDefault();
+    }
+
+    const age = parseInt(document.getElementById("age").value);
+    if (age < 10 || age > 100) {
+      alert("Please enter a valid age between 10 and 100.");
+      event.preventDefault();
+    }
+
+    const password = document.getElementById("password").value;
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      event.preventDefault();
+    }
+  });
+</script>
+
+</body>
+</html>
